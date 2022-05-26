@@ -12,13 +12,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-            .antMatchers("/**", "/index**").permitAll() // prideti URL'us kuriuos gali matyt visi
-            .antMatchers("/login**").permitAll() // prideti URL'us kuriuos gali matyti tik admin
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-            .and()
-            .httpBasic();
+        .antMatchers("/", "/index**", "login**\"").permitAll() // prideti URL'us kuriuos gali matyt visi
+        .and()
+        .authorizeRequests()
+        .antMatchers("/test**").hasRole("ADMIN") // URL, kuriuos mato tik admin
+        .anyRequest().authenticated()
+        .and()
+        .formLogin()
+        .and()
+        .httpBasic();
     }
 
     @Override
