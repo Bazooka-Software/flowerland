@@ -1,6 +1,6 @@
-package repositories;
+package com.bazooka.flowerland.repositories;
 
-import entities.Product;
+import com.bazooka.flowerland.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
