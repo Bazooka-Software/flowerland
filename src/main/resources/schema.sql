@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS PRODUCT;
+
+CREATE TABLE PRODUCT (
+                         id INT AUTO_INCREMENT  PRIMARY KEY,
+                         name VARCHAR(250) NOT NULL,
+                         price INT NOT NULL,
+                         quantity INT NOT NULL,
+                         imageUrl VARCHAR(250) NOT NULL
+
+);
