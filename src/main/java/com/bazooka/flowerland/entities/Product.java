@@ -1,4 +1,4 @@
-package entities;
+package com.bazooka.flowerland.entities;
 
 import javax.persistence.*;
 
