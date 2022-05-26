@@ -1,4 +1,4 @@
-/*package com.bazooka.flowerland.controllers;
+package com.bazooka.flowerland.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,4 +13,4 @@ public class ProductController {
 
         return "product_all";
     }
-}*/
+}
