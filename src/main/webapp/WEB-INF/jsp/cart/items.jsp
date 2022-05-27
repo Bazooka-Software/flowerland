@@ -4,7 +4,7 @@
 
 <div class="container">
     <br>
-    <h3>My Cart</h3>
+    <h3><i class="fas fa-shopping-cart"></i> My Cart</h3>
     <br>
     <br>
     <ul class="list-group">
