@@ -5,7 +5,6 @@
 <html>
 
 <body>
-<h2 align="center"> Welcome to our humble flower show ${name}!</h2>
 <div class="hero-area hero-bg">
     <div class="container">
         <div class="row">
@@ -13,10 +12,10 @@
                 <div class="hero-text">
                     <div class="hero-text-tablecell">
                         <p class="subtitle">Fresh & Organic</p>
-                        <h1>Delicious Seasonal Fruits</h1>
+                        <h1>Beautiful Locally Grown Flowers</h1>
                         <div class="hero-btns">
                             <a href="products" class="boxed-btn">Flower Collection</a>
-                            <a href="contact.html" class="bordered-btn">Contact Us</a>
+                            <a href="contact.html" class="boxed-btn">Contact Us</a>
                         </div>
                     </div>
                 </div>

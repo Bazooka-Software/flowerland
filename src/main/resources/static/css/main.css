@@ -5,6 +5,34 @@
 .cart-item {
     width: 200px;
     height: auto;
+}
+a.boxed-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: bisque;
+    color: black;
+    padding: 10px 20px;
+}
+
+a.bordered-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    color:black;
+    border: 2px solid yellow;
+    padding: 7px 20px;
+}
+a.boxed-btn:hover {
+    background-color: #051922;
+    color: bisque;
+}
+a.bordered-btn:hover {
+    background-color: yellow;
+    color:black;
+}
+a.boxed-btn, a.bordered-btn, a.cart-btn {
+    border-radius: 50px;
+}
+/* ------ Hero Styles ------*/
 .btn-primary {
     background-color: bisque;
     border-color: darkgreen;
@@ -59,7 +87,8 @@
 }
 
 .hero-text p.subtitle {
-    color: #F28123;
+    color: darkolivegreen;
+    filter:brightness(160%);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 7px;
@@ -69,8 +98,9 @@
 .hero-text h1 {
     font-size: 64px;
     font-weight: 700;
-    line-height: 1.3;
-    color: #fff;
+    line-height: 1;
+    color: darkolivegreen;
+    filter:brightness(160%);
 }
 
 .hero-area div {
@@ -105,7 +135,7 @@
 }
 
 .hero-area div.hero-form {
-    background-color: #fff;
+    background-color: grey;
     text-align: center;
     width: 380px;
     margin: 0 auto;
@@ -118,33 +148,11 @@
     bottom: 70%;
     height: 600px;
 }
-
-.hero-btns a.boxed-btn {
-    display: block;
-    margin: 0 auto;
-}
-
 .hero-btns {
-    text-align: center;
-}
-
-.hero-btns a.bordered-btn {
     margin-left: 0;
     margin-top: 15px;
     display: block;
-}
-
-.hero-form .hero-btns a.bordered-btn {
-    margin-left: 0;
-    margin-top: 20px;
-}
-
-.hero-btns {
     text-align: center;
 }
 
-.hero-btns a.bordered-btn {
-    margin-left: 0;
-    margin-top: 15px;
-    display: block;
-}
+/* ------  ------*/
