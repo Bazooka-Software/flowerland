@@ -20,8 +20,19 @@ public class CartItem {
 
     private int quantity;
 
-    public CartItem(Product product, int quantity) {
+    private String sessionId;
+
+    public CartItem(Product product, String sessionId) {
         this.product = product;
+        this.sessionId = sessionId;
+    }
+    public CartItem(Product product, String sessionId, int quantity) {
+        this.product = product;
+        this.sessionId = sessionId;
         this.quantity = quantity;
     }
+    public CartItem(String sessionId) {
+        this.sessionId = sessionId;
+    }
 }
+

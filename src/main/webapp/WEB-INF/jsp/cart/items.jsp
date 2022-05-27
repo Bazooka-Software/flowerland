@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/jsp/common/includes.jspf"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container">
@@ -34,6 +35,7 @@
             <form:input type="hidden" path="cartItems[${status.index}].id" />
             <form:input type="hidden" path="cartItems[${status.index}].product" />
             <form:input type="hidden" path="cartItems[${status.index}].quantity" />
+            <form:input type="hidden" path="cartItems[${status.index}].sessionId" />
         </c:forEach>
         <input type="submit" value="Checkout" />
     </form:form>

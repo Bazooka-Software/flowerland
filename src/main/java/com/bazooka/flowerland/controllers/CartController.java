@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -48,7 +49,8 @@ public class CartController {
     @PostMapping("add")
     public CompletableFuture<ModelAndView> addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
-        var items = cartItemService.getCardItemsByProduct(cartItem.getProduct());
+        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        var items = cartItemService.getCardItemsByProductAndSessionId(cartItem.getProduct(),sessionId);
 
         if (items.isEmpty()) {
             cartItemService.addCartItem(cartItem);
@@ -56,7 +58,6 @@ public class CartController {
             var previousItem = items.get(0);
             var currentQuantity = previousItem.getQuantity();
             previousItem.setQuantity(currentQuantity + cartItem.getQuantity());
-
             cartItemService.addCartItem(previousItem);
         }
         return CompletableFuture.supplyAsync(() -> mv);

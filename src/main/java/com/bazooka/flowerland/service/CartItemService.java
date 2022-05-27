@@ -6,11 +6,14 @@ import com.bazooka.flowerland.repository.CartItemRepository;
 import com.bazooka.flowerland.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequestScope
 public class CartItemService {
     @Autowired
     private CartItemRepository cartItemRepository;
@@ -20,8 +23,9 @@ public class CartItemService {
 
 
     public List<Product> retrieveProductsFromCart() {
-        List<CartItem> cartItems  =cartItemRepository.findAll();
         List<Product> productsInCart = new ArrayList<>();
+        String sesId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        List<CartItem> cartItems  = cartItemRepository.findAllBySessionId(sesId);
 
         for (CartItem item : cartItems) {
             productsInCart.add(item.getProduct());
@@ -31,7 +35,8 @@ public class CartItemService {
     }
 
     public List<CartItem> getCartItems() {
-        return cartItemRepository.findAll();
+        String sesId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        return cartItemRepository.findAllBySessionId(sesId);
     }
 
     public Integer getTotalCartCost() {
@@ -51,11 +56,12 @@ public class CartItemService {
         cartItemRepository.deleteById(item.getId());
     }
 
-    public void addItemToCart(Product product) {
-        cartItemRepository.save(new CartItem(product, 1));
+
+    public void addItemToCart(Product product, String sessionId) {
+        cartItemRepository.save(new CartItem(product, sessionId,1));
     }
 
-    public List<CartItem> getCardItemsByProduct(Product product) { return cartItemRepository.findAllByProduct(product); }
+    public List<CartItem> getCardItemsByProductAndSessionId(Product product, String sessionId) { return cartItemRepository.findAllByProductAndSessionId(product, sessionId); }
 
     public void addCartItem(CartItem cartItem) { cartItemRepository.save(cartItem);}
 }

@@ -40,6 +40,7 @@
                 </table>
                 <form:form method="POST" action="/cart/add" modelAttribute="cartItem">
                     <form:input type="hidden" path="product" value="${product.id}" />
+                    <form:input type="hidden" path="sessionId" value="${sessionId}"/>
                     <form:input type="number" path="quantity" name="quantity" />
                     <input type="submit" value="Add to Cart" />
                 </form:form>

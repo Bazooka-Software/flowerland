@@ -9,4 +9,4 @@ INSERT INTO PRODUCT (name, price, quantity, image_url) VALUES
 --INSERT INTO PRODUCT (name, price, quantity, imageUrl) VALUES
 --    ('Roze', 3.5, 21, 'img_1.png')
 
-INSERT INTO CART_ITEM (product_id, quantity) VALUES (1, 3);
+--INSERT INTO CART_ITEM (product_id) VALUES (1);
