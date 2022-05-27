@@ -44,7 +44,7 @@
                     </tr>
                 </table>
                 <form:form method="POST" action="/cart/add" modelAttribute="product">
-                    <form:input type="hidden" path="id" value="${id}" />
+                    <form:input type="hidden" path="id" value="${product.id}" />
                     <input type="submit" value="Add to Cart" />
                 </form:form>
             </div>
@@ -61,6 +61,6 @@
 
 
 <body>
-<h2 align="center"> Single product here ${name}!</h2>
+<h2 align="center"> Single product here ${product.name}!</h2>
 </body>
 </html>
