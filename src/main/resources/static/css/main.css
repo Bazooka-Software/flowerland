@@ -1,6 +1,25 @@
 .card {
     display:inline-block;
 }
+
+.btn-primary {
+    background-color: bisque;
+    border-color: darkgreen;
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: darkgreen;
+    transition: 0.7s;
+}
+
+.card:hover {
+    background-color: #F3F3F3;
+    transition: 0.5s;
+}
+
+.container {
+    align-content: center;
 .hero-bg {
     background-image: url(../images/home_img1.jpg);
     background-size: cover;

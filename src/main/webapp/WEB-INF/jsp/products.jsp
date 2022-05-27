@@ -6,17 +6,29 @@
 
 <html>
 <body>
+<br>
 <div class="container">
-    <c:forEach items="${flowers}" var="flower">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Pavadinimas: ${flower.name}</h5>
-                <p class="card-text">Kaina: $${flower.price}</p>
-                <a href="#" class="btn btn-primary">Likutis: ${flower.quantity}</a>
+<h2 align="center"> Our flowers, all packed with love!</h2>
+<p><i> The flower journey starts by planting the seed, then we carefully put them to greenhouses, and wait for the magic - flowers to start bloom! Once that happens we are happy to present them to you - beautiful, healthy, long-lasting!</i></p>
+</div>
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <c:forEach items="${flowers}" var="flower">
+            <div class="card" style="width: 18rem;" onclick="function myFunction() {
+            }
+            myFunction()">
+                <img class="card-img-top" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${flower.name}</h5>
+                    <p class="card-text">Kaina: $${flower.price}</p>
+                    <a href="#" class="btn btn-primary">Likutis: ${flower.quantity}</a>
+                </div>
             </div>
+        </c:forEach>
         </div>
-    </c:forEach>
+    </div>
+
 </div>
 </body>
 </html>

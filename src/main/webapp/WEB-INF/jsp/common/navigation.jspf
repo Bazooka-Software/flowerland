@@ -18,8 +18,8 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
-       Flower Power
+      <a class="navbar-brand mt-2 mt-lg-0"  href="#">
+        <img src="/images/logo.png" width="110" height="110">
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -38,7 +38,8 @@
     <div class="d-flex align-items-center">
       <!-- Icon -->
       <a class="text-reset me-3" href="#">
-        <i class="fas fa-shopping-cart"></i> My cart
+        <i class="fas fa-shopping-cart"></i>
+        <a class="nav-link" href="/cart/items">My Cart</a>
       </a>
     </div>
     <!-- Right elements -->

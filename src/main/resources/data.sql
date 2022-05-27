@@ -1,5 +1,5 @@
 INSERT INTO PRODUCT (name, price, quantity, image_url) VALUES
-    ('Hortenzijaaaa', 3.5, 21, 'img_1.png');
+    ('Hortenzija', 3.5, 21, 'img_1.png');
 INSERT INTO PRODUCT (name, price, quantity, image_url) VALUES
     ('Tulpe', 3.5, 21, 'img_2.png');
 INSERT INTO PRODUCT (name, price, quantity, image_url) VALUES
