@@ -8,19 +8,20 @@
     <br>
     <br>
     <ul class="list-group">
-        <c:forEach items="${cartItemsInCart}" var="cartItem">
+        <c:forEach items="${cart.cartItems}" var="item">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <img class="card-img-top cart-item img-thumbnail" src="<c:url value="/images/${cartItem.product.imageUrl}"/>" alt="Card image cap">
-                Vnt: ${cartItem.product.quantity}
+                <img class="card-img-top cart-item img-thumbnail" src="<c:url value="/images/${item.product.imageUrl}"/>" alt="Card image cap">
+                Vnt: ${item.quantity}
                 <span class="badge badge-primary badge-pill">14</span>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">${cartItem.product.name}</h5>
-                        <p class="card-text">Kaina: ${cartItem.product.price}€</p>
+                        <h5 class="card-title">${item.product.name}</h5>
+                        <p class="card-text">Kaina: ${item.product.price}€</p>
                     </div>
                 </div>
+                Viso: ${item.quantity * item.product.price}€
                 <form:form method="POST" action="/cart/delete" modelAttribute="deleteItemRequest">
-                    <form:input type="hidden" path="id" value="${cartItem.getId()}" />
+                    <form:input type="hidden" path="id" value="${item.getId()}" />
                     <input type="submit" value="Delete" />
                 </form:form>
             </li>
