@@ -8,3 +8,5 @@ INSERT INTO PRODUCT (name, price, quantity, image_url) VALUES
     ('Rozmarinas', 3.5, 21, 'img_4.png');
 --INSERT INTO PRODUCT (name, price, quantity, imageUrl) VALUES
 --    ('Roze', 3.5, 21, 'img_1.png')
+
+INSERT INTO CART_ITEM (product_id) VALUES (1);
