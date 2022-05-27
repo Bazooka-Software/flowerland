@@ -156,3 +156,10 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
     text-align: center;
 }
 
+.navbar-brand {
+    margin-bottom: 30px;
+}
+
+.nav-item {
+     margin-left: 20px;
+}
