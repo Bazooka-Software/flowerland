@@ -19,8 +19,8 @@
                 <img class="card-img-top" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">${flower.name}</h5>
-                    <p class="card-text">Kaina: $${flower.price}</p>
-                    <a href="singleProduct.jsp?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
+                    <p class="card-text">Kaina: ${flower.price}€</p>
+                    <a href="singleProduct?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
                 </div>
             </div>
         </c:forEach>

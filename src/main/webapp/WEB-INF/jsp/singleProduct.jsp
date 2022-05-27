@@ -30,21 +30,22 @@
                     <tr>
                         <td>
                             <div class="single-info">
-                                <img src="/images/img.png" width="200"
-                                     height="200"/>
+                                <img class="card-img-top" src="<c:url value="/images/${product.imageUrl}"/>" alt="Card image cap" style='height: 100%; width: 100%; object-fit: contain'/>
+
                                 <div>
-                                    <p>Gele Name</p>
-                                    <small>Price: $50.00</small>
+                                    <p class="card-title">${product.name}</p>
+                                    <small class="card-text">Price: ${product.price}€</small>
                                 </div>
                             </div>
                         </td>
                         </td>
-                        <td><input type="number" value="1"></td>
+                        <td><input type="number" name="quantity" value="1"></td>
                         <td>$50.00</td>
                     </tr>
                 </table>
-                <form:form method="POST" action="/cart/add" modelAttribute="product">
-                    <form:input type="hidden" path="id" value="${id}" />
+                <form:form method="POST" action="/cart/add" modelAttribute="cartItem">
+                    <form:input type="hidden" path="id" value="${product.id}" />
+                    <form:input type="hidden" path="quantity" value="${quantity}" />
                     <input type="submit" value="Add to Cart" />
                 </form:form>
             </div>
@@ -61,6 +62,6 @@
 
 
 <body>
-<h2 align="center"> Single product here ${name}!</h2>
+<h2 align="center"> Single product here ${product.name}!</h2>
 </body>
 </html>

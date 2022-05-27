@@ -43,4 +43,8 @@ public class CartItemService {
     public void addItemToCart(Product product) {
         cartItemRepository.save(new CartItem(product));
     }
+
+    public void addCartItem(CartItem cartItem) {
+        cartItemRepository.save(cartItem);
+    }
 }

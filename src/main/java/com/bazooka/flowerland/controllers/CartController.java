@@ -40,9 +40,9 @@ public class CartController {
     }
 
     @PostMapping("add")
-    public ModelAndView addItem(@ModelAttribute("product") Product product) {
+    public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
-        cartItemService.addItemToCart(product);
+        cartItemService.addCartItem(cartItem);
         return mv;
     }
 

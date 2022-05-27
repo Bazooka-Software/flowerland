@@ -20,9 +20,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping({
-            "/products"
-    })
+    @GetMapping({"/products"})
     public String hello(@RequestParam(value = "name", defaultValue = "World",
             required = true) String name, Model model) {
         List<Product> flowers = productService.retrieveProducts();
@@ -35,16 +33,14 @@ public class ProductController {
 
         return "products";
     }*/
-  @GetMapping({
-          "/singleProduct"
-  })
+  @GetMapping({"/singleProduct"})
   public String singleProduct(
-          @RequestParam(value = "name", defaultValue = "Customer", required = true) String name,
-          @RequestParam(value = "id", defaultValue = "1", required = true) Integer id,
+          @RequestParam(value = "productId") Integer id,
           Model model) {
-      model.addAttribute("name", name);
-      model.addAttribute("id", id);
-      model.addAttribute("product", new Product());
+
+      System.out.println(id);
+      Product product = productService.findById(id);
+      model.addAttribute("product", product);
       return "singleProduct";
   }
 }

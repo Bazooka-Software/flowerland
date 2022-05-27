@@ -16,6 +16,8 @@ public class CartItem {
     @JoinColumn(name = "productId")
     private Product product;
 
+    private int quantity;
+
     public CartItem(Product product) {
         this.product = product;
     }
