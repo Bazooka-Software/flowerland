@@ -1,5 +1,6 @@
 <%@ include file="common/includes.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +35,6 @@
                                 <div>
                                     <p>Gele Name</p>
                                     <small>Price: $50.00</small>
-                                    <a href="">Remove</a>
                                 </div>
                             </div>
                         </td>
@@ -43,6 +43,10 @@
                         <td>$50.00</td>
                     </tr>
                 </table>
+                <form:form method="POST" action="/cart/add" modelAttribute="product">
+                    <form:input type="hidden" path="id" value="${id}" />
+                    <input type="submit" value="Add to Cart" />
+                </form:form>
             </div>
         </div>
         <!-- right section -->

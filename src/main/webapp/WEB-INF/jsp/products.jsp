@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <h5 class="card-title">${flower.name}</h5>
                     <p class="card-text">Kaina: $${flower.price}</p>
-                    <a href="product.jsp?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
+                    <a href="singleProduct.jsp?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
                 </div>
             </div>
         </c:forEach>

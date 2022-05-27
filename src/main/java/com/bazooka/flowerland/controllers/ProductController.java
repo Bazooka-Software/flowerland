@@ -1,5 +1,6 @@
 package com.bazooka.flowerland.controllers;
 
+import com.bazooka.flowerland.entities.CartItem;
 import com.bazooka.flowerland.entities.Product;
 import com.bazooka.flowerland.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,13 @@ public class ProductController {
   @GetMapping({
           "/singleProduct"
   })
-  public String singleProduct(@RequestParam(value = "name", defaultValue = "Customer",
-          required = true) String name, Model model) {
+  public String singleProduct(
+          @RequestParam(value = "name", defaultValue = "Customer", required = true) String name,
+          @RequestParam(value = "id", defaultValue = "1", required = true) Integer id,
+          Model model) {
       model.addAttribute("name", name);
+      model.addAttribute("id", id);
+      model.addAttribute("product", new Product());
       return "singleProduct";
   }
 }
