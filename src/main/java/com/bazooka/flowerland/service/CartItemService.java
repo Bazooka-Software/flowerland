@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 
 @Service
 @Slf4j
@@ -34,12 +35,7 @@ public class CartItemService {
         List<Product> productsInCart = new ArrayList<>();
         String sesId = RequestContextHolder.currentRequestAttributes().getSessionId();
         List<CartItem> cartItems = new ArrayList<>();
-        try {
-            cartItems = cartItemRepository.findAllBySessionId(sesId);
-        } catch(LockTimeoutException lte) {
-            log.error("Found pessimistic lock exception!", lte);
-            sleep(OPTIMISTIC_LOCK_TIMEOUT_RETRY);
-        }
+        cartItems = cartItemRepository.findAllBySessionId(sesId);
 
         for (CartItem item : cartItems) {
             productsInCart.add(item.getProduct());
@@ -67,7 +63,12 @@ public class CartItemService {
     }
 
     public void deleteItemFromCart(CartItem item) {
-        cartItemRepository.deleteById(item.getId());
+        try {
+            cartItemRepository.deleteById(item.getId());
+        } catch (LockTimeoutException lte) {
+            log.error("Optimist lock timeout detected: ", lte);
+            sleep(OPTIMISTIC_LOCK_TIMEOUT_RETRY);
+        }
     }
 
 
@@ -77,7 +78,14 @@ public class CartItemService {
 
     public List<CartItem> getCardItemsByProductAndSessionId(Product product, String sessionId) { return cartItemRepository.findAllByProductAndSessionId(product, sessionId); }
 
-    public void addCartItem(CartItem cartItem) { cartItemRepository.save(cartItem);}
+    public void addCartItem(CartItem cartItem) {
+        try {
+            cartItemRepository.save(cartItem);
+        } catch (LockTimeoutException lte) {
+            log.error("Optimist lock timeout detected: ", lte);
+            sleep(OPTIMISTIC_LOCK_TIMEOUT_RETRY);
+        }
+    }
 
     private void sleep(long timeout) {
         try {
