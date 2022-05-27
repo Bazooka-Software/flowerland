@@ -33,7 +33,16 @@ public class CartItemService {
     }
 
     public Integer getTotalCartCost() {
-        return retrieveProductsFromCart().stream().mapToInt(Product::getPrice).sum();
+        int total = 0;
+        int n = getCartItems().size();
+        List<Integer> prices = getCartItems().stream().map(c -> c.getProduct().getPrice()).toList();
+        List<Integer> quantities = getCartItems().stream().map(CartItem::getQuantity).toList();
+
+        for (int i = 0; i < n; i++) {
+            total += prices.get(i) * quantities.get(i);
+        }
+
+        return total;
     }
 
     public void deleteItemFromCart(CartItem item) {
