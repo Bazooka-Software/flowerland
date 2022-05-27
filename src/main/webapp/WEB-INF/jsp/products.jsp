@@ -15,14 +15,12 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <c:forEach items="${flowers}" var="flower">
-            <div class="card" style="width: 18rem;" onclick="function myFunction() {
-            }
-            myFunction()">
+            <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">${flower.name}</h5>
                     <p class="card-text">Kaina: $${flower.price}</p>
-                    <a href="#" class="btn btn-primary">Likutis: ${flower.quantity}</a>
+                    <a href="product.jsp?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
                 </div>
             </div>
         </c:forEach>

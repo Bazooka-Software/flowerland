@@ -33,4 +33,12 @@ public class ProductController {
 
         return "products";
     }*/
+  @GetMapping({
+          "/singleProduct"
+  })
+  public String singleProduct(@RequestParam(value = "name", defaultValue = "Customer",
+          required = true) String name, Model model) {
+      model.addAttribute("name", name);
+      return "singleProduct";
+  }
 }

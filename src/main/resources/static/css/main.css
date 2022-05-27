@@ -2,6 +2,9 @@
     display:inline-block;
 }
 
+.cart-item {
+    width: 200px;
+    height: auto;
 .btn-primary {
     background-color: bisque;
     border-color: darkgreen;
