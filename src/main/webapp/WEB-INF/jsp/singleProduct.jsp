@@ -15,7 +15,7 @@
     <div class="row">
         <!-- left section -->
         <div class="left-section pull-left">
-            L
+
         </div>
 
         <div class="col-md-12 mid-col">
@@ -29,9 +29,10 @@
                     <tr>
                         <td>
                             <div class="single-info">
-                                <img src="/src/main/resources/static/images/img.png"/>
+                                <img src="/images/img.png" width="200"
+                                     height="200"/>
                                 <div>
-                                    <p>Gele</p>
+                                    <p>Gele Name</p>
                                     <small>Price: $50.00</small>
                                     <a href="">Remove</a>
                                 </div>
@@ -46,7 +47,7 @@
         </div>
         <!-- right section -->
         <div class="left-section pull-right">
-            R
+
         </div>
 
     </div>
