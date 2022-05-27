@@ -1,6 +1,7 @@
 package com.bazooka.flowerland.controllers;
 
 import com.bazooka.flowerland.entities.CartItem;
+import com.bazooka.flowerland.entities.Product;
 import com.bazooka.flowerland.requests.DeleteItemRequest;
 import com.bazooka.flowerland.service.CartItemService;
 import org.hibernate.sql.Delete;
@@ -28,6 +29,13 @@ public class CartController {
     public ModelAndView deleteItem(@ModelAttribute("cartItem") CartItem item) {
         ModelAndView mv = new ModelAndView("redirect:items");
         cartItemService.deleteItemFromCart(item);
+        return mv;
+    }
+
+    @PostMapping("add")
+    public ModelAndView addItem(@ModelAttribute("product") Product product) {
+        ModelAndView mv = new ModelAndView("redirect:items");
+        cartItemService.addItemToCart(product);
         return mv;
     }
 }
