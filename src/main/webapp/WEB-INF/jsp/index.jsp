@@ -39,16 +39,6 @@
 
         <p class="footer-links">
             <a class="link-1" href="/index">Home</a>
-
-            <a href="#">Blog</a>
-
-            <a href="#">Pricing</a>
-
-            <a href="#">About</a>
-
-            <a href="#">Faq</a>
-
-            <a href="#">Contact</a>
         </p>
 
         <p>Bazooka software &copy; 2022</p>

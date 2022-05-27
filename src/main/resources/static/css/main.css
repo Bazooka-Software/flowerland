@@ -161,10 +161,12 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
     bottom: 0;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+.navbar-brand {
+    margin-bottom: 30px;
+}
 
-* {
-    font-family: Roboto;
+.nav-item {
+    margin-left: 20px;
 }
 
 section {

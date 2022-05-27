@@ -18,8 +18,8 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">${flower.name}</h5>
-                    <p class="card-text">Kaina: ${flower.price}€</p>
+                    <h3 class="card-title">${flower.name}</h3>
+                    <p class="card-text">Price: ${flower.price}€</p>
                     <a href="singleProduct?productId=${flower.id}" class="btn btn-primary stretched-link">Likutis: ${flower.quantity}</a>
                 </div>
             </div>
@@ -28,7 +28,9 @@
     </div>
 
 </div>
-<footer class="footer-distributed">
+<br>
+<br>
+<footer class="footer-in">
 
     <div class="footer-right">
 
@@ -43,16 +45,6 @@
 
         <p class="footer-links">
             <a class="link-1" href="/index">Home</a>
-
-            <a href="#">Blog</a>
-
-            <a href="#">Pricing</a>
-
-            <a href="#">About</a>
-
-            <a href="#">Faq</a>
-
-            <a href="#">Contact</a>
         </p>
 
         <p>Bazooka software &copy; 2022</p>
