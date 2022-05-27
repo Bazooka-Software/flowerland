@@ -32,6 +32,7 @@
         <c:forEach items="${cart.cartItems}" var="item" varStatus="status">
             <form:input type="hidden" path="cartItems[${status.index}].id" />
             <form:input type="hidden" path="cartItems[${status.index}].product" />
+            <form:input type="hidden" path="cartItems[${status.index}].quantity" />
         </c:forEach>
         <input type="submit" value="Checkout" />
     </form:form>
