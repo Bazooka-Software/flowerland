@@ -1,0 +1,3 @@
+<mvc:interceptors>
+    <bean id="loggerInterceptor" class="com.baeldung.web.interceptor.LoggerInterceptor"/>
+</mvc:interceptors>
