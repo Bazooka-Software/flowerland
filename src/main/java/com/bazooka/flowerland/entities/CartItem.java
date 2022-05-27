@@ -22,6 +22,9 @@ public class CartItem {
 
     private String sessionId;
 
+    @Version
+    private Integer version;
+
     public CartItem(Product product, String sessionId) {
         this.product = product;
         this.sessionId = sessionId;

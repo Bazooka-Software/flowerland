@@ -28,8 +28,8 @@ public class CartController {
     CartItemService cartItemService;
     @GetMapping("/items")
     public CompletableFuture<String> items(Model model) throws ExecutionException, InterruptedException {
-        List<Product> productsInCart = CompletableFuture.supplyAsync(() -> cartItemService.retrieveProductsFromCart()).get();
-        List<CartItem> cartItems = CompletableFuture.supplyAsync(() -> cartItemService.getCartItems()).get();
+        List<Product> productsInCart = cartItemService.retrieveProductsFromCart();
+        List<CartItem> cartItems = cartItemService.getCartItems();
         Cart cart = new Cart(cartItems);
         model.addAttribute("cart", cart);
         model.addAttribute("cartItemsInCart", cartItems);

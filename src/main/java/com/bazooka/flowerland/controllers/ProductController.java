@@ -18,7 +18,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Controller
-//@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -26,17 +25,13 @@ public class ProductController {
 
     @GetMapping({"/products"})
     public CompletableFuture<String> hello(@RequestParam(value = "name", defaultValue = "World",
-            required = true) String name, Model model) throws ExecutionException, InterruptedException {
-        List<Product> flowers = CompletableFuture.supplyAsync(() -> productService.retrieveProducts()).get();
+            required = true) String name, Model model) {
+        List<Product> flowers = productService.retrieveProducts();
 
         model.addAttribute("flowers", flowers);
         return CompletableFuture.supplyAsync(() -> "products");
     }
-  /*  @GetMapping({"/all"})
-    public String getAllProducts() {
 
-        return "products";
-    }*/
   @GetMapping({"/singleProduct"})
   public String singleProduct(
           @RequestParam(value = "productId") Integer id,
