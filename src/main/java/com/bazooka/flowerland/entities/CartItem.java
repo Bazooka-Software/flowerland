@@ -18,7 +18,10 @@ public class CartItem {
 
     private int quantity;
 
-    public CartItem(Product product) {
+    private String sessionId;
+
+    public CartItem(Product product, String sessionId) {
         this.product = product;
+        this.sessionId = sessionId;
     }
 }
