@@ -51,8 +51,11 @@ public class CartController {
         if (items.isEmpty()) {
             cartItemService.addCartItem(cartItem);
         } else {
-            var currentQuantity = items.get(0).getQuantity();
-            items.get(0).setQuantity(currentQuantity + cartItem.getQuantity());
+            var previousItem = items.get(0);
+            var currentQuantity = previousItem.getQuantity();
+            previousItem.setQuantity(currentQuantity + cartItem.getQuantity());
+
+            cartItemService.addCartItem(previousItem);
         }
         return mv;
     }
