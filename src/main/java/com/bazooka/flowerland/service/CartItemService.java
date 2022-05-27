@@ -32,4 +32,8 @@ public class CartItemService {
     public Integer getTotalCartCost() {
         return retrieveItemsFromCart().stream().mapToInt(Product::getPrice).sum();
     }
+
+    public void deleteItemFromCart(CartItem item) {
+        cartItemRepository.deleteById(item.getId());
+    }
 }
