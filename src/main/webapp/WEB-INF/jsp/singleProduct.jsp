@@ -16,7 +16,6 @@
     <div class="row">
         <!-- left section -->
         <div class="left-section pull-left">
-
         </div>
 
         <div class="col-md-12 mid-col">
@@ -28,8 +27,11 @@
                                 <img class="card-img-top" src="<c:url value="/images/${product.imageUrl}"/>" alt="Card image cap" style='height: 100%; width: 100%; object-fit: contain'/>
 
                                 <div>
-                                    <p class="card-title">${product.name}</p>
-                                    <small class="card-text">Price: ${product.price}€</small>
+                                    <br>
+                                    <h3 class="card-title"> ${product.name}</h3>
+                                    <br>
+                                    <p class="card-text">Price: ${product.price}€</p>
+                                    <br>
                                 </div>
                             </div>
                         </td>
@@ -44,14 +46,14 @@
                 </form:form>
             </div>
         </div>
+
         <!-- right section -->
         <div class="left-section pull-right">
-
         </div>
 
     </div>
 </div>
-<footer class="footer-distributed">
+<footer class="footer-in">
 
     <div class="footer-right">
 
@@ -65,27 +67,10 @@
     <div class="footer-left">
 
         <p class="footer-links">
-            <a class="link-1" href="/index">Home</a>
-
-            <a href="#">Blog</a>
-
-            <a href="#">Pricing</a>
-
-            <a href="#">About</a>
-
-            <a href="#">Faq</a>
-
-            <a href="#">Contact</a>
+            <a class="link-1" href="/index">Go to home</a>
         </p>
 
         <p>Bazooka software &copy; 2022</p>
     </div>
-
 </footer>
-
-
-
-<body>
-<h2 align="center"> Single product here ${product.name}!</h2>
-</body>
 </html>
