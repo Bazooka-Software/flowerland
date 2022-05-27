@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface CartItemRepository extends CrudRepository<CartItem, Integer> {
     List<CartItem> findAll();
+
+    List<CartItem> findAllByProduct(Product product);
 }
