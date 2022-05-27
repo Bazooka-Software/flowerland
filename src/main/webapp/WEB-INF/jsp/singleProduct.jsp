@@ -39,12 +39,13 @@
                             </div>
                         </td>
                         </td>
-                        <td><input type="number" value="1"></td>
+                        <td><input type="number" name="quantity" value="1"></td>
                         <td>$50.00</td>
                     </tr>
                 </table>
-                <form:form method="POST" action="/cart/add" modelAttribute="product">
+                <form:form method="POST" action="/cart/add" modelAttribute="cartItem">
                     <form:input type="hidden" path="id" value="${product.id}" />
+                    <form:input type="hidden" path="quantity" value="${quantity}" />
                     <input type="submit" value="Add to Cart" />
                 </form:form>
             </div>
