@@ -41,7 +41,7 @@ public class CartController {
     }
 
     @PostMapping("add")
-    public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
+    public ModelAndView addItem(@ModelAttribute("product") Product product) {
         ModelAndView mv = new ModelAndView("redirect:items");
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         cartItemService.addItemToCart(product, sessionId);
