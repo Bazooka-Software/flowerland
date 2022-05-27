@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,7 +36,8 @@ public class CartController {
     @PostMapping("add")
     public ModelAndView addItem(@ModelAttribute("product") Product product) {
         ModelAndView mv = new ModelAndView("redirect:items");
-        cartItemService.addItemToCart(product);
+        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        cartItemService.addItemToCart(product, sessionId);
         return mv;
     }
 }

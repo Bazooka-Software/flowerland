@@ -6,11 +6,14 @@ import com.bazooka.flowerland.repository.CartItemRepository;
 import com.bazooka.flowerland.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequestScope
 public class CartItemService {
     @Autowired
     private CartItemRepository cartItemRepository;
@@ -20,7 +23,8 @@ public class CartItemService {
     public List<Product> retrieveItemsFromCart() {
         List<CartItem> cartItems = new ArrayList<>();
         List<Product> productsInCart = new ArrayList<>();
-        cartItemRepository.findAll().forEach(c -> cartItems.add(c));
+        String sesId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        cartItemRepository.findAllBySessionId(sesId).forEach(c -> cartItems.add(c));
 
         for (CartItem item : cartItems) {
             productsInCart.add(item.getProduct());
@@ -37,7 +41,7 @@ public class CartItemService {
         cartItemRepository.deleteById(item.getId());
     }
 
-    public void addItemToCart(Product product) {
-        cartItemRepository.save(new CartItem(product));
+    public void addItemToCart(Product product, String sessionId) {
+        cartItemRepository.save(new CartItem(product, sessionId));
     }
 }

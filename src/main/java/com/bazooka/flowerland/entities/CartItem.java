@@ -16,7 +16,10 @@ public class CartItem {
     @JoinColumn(name = "productId")
     private Product product;
 
-    public CartItem(Product product) {
+    private String sessionId;
+
+    public CartItem(Product product, String sessionId) {
         this.product = product;
+        this.sessionId = sessionId;
     }
 }
