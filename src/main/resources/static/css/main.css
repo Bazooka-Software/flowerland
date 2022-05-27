@@ -41,6 +41,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 
 .btn-primary:hover {
     background-color: darkgreen;
+    border-color: darkgreen;
     transition: 0.7s;
 }
 
