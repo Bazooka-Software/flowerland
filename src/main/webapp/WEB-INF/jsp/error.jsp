@@ -1,5 +1,4 @@
-<%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/includes.jspf"%>
 
 <div class="container">
     An exception has occured. Contact support.
