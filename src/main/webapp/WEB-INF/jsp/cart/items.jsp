@@ -8,7 +8,7 @@
     <br>
     <br>
     <ul class="list-group">
-        <c:forEach items="${cartItems}" var="flower">
+        <c:forEach items="${productsInCart}" var="flower">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <img class="card-img-top cart-item img-thumbnail" src="<c:url value="/images/${flower.imageUrl}"/>" alt="Card image cap">
                 Vnt: ${flower.quantity}
@@ -28,4 +28,11 @@
     </ul>
     <br>
     <h4>Total cost: ${totalCost}€</h4>
+    <form:form method="POST" action="/cart/checkout" modelAttribute="cart" varStatus="idx">
+        <c:forEach items="${cart.cartItems}" var="item" varStatus="status">
+            <form:input type="hidden" path="cartItems[${status.index}].id" />
+            <form:input type="hidden" path="cartItems[${status.index}].product" />
+        </c:forEach>
+        <input type="submit" value="Checkout" />
+    </form:form>
 </div>
