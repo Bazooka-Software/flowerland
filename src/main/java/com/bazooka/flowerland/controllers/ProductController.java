@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 //@RequestMapping("/products")
@@ -22,12 +24,12 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping({"/products"})
-    public String hello(@RequestParam(value = "name", defaultValue = "World",
-            required = true) String name, Model model) {
-        List<Product> flowers = productService.retrieveProducts();
+    public CompletableFuture<String> hello(@RequestParam(value = "name", defaultValue = "World",
+            required = true) String name, Model model) throws ExecutionException, InterruptedException {
+        List<Product> flowers = CompletableFuture.supplyAsync(() -> productService.retrieveProducts()).get();
 
         model.addAttribute("flowers", flowers);
-        return "products";
+        return CompletableFuture.supplyAsync(() -> "products");
     }
   /*  @GetMapping({"/all"})
     public String getAllProducts() {

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/cart")
@@ -24,27 +26,27 @@ public class CartController {
     @Autowired
     CartItemService cartItemService;
     @GetMapping("/items")
-    public String items(Model model) {
-        List<Product> productsInCart = cartItemService.retrieveProductsFromCart();
-        List<CartItem> cartItems = cartItemService.getCartItems();
+    public CompletableFuture<String> items(Model model) throws ExecutionException, InterruptedException {
+        List<Product> productsInCart = CompletableFuture.supplyAsync(() -> cartItemService.retrieveProductsFromCart()).get();
+        List<CartItem> cartItems = CompletableFuture.supplyAsync(() -> cartItemService.getCartItems()).get();
         Cart cart = new Cart(cartItems);
         model.addAttribute("cart", cart);
         model.addAttribute("cartItemsInCart", cartItems);
         Integer totalCost = cartItemService.getTotalCartCost();
         model.addAttribute("totalCost", totalCost);
         model.addAttribute("deleteItemRequest", new DeleteItemRequest());
-        return "cart/items";
+        return CompletableFuture.supplyAsync(() -> "cart/items");
     }
 
     @PostMapping("delete")
-    public ModelAndView deleteItem(@ModelAttribute("cartItem") CartItem item) {
+    public CompletableFuture<ModelAndView> deleteItem(@ModelAttribute("cartItem") CartItem item) {
         ModelAndView mv = new ModelAndView("redirect:items");
         cartItemService.deleteItemFromCart(item);
-        return mv;
+        return CompletableFuture.supplyAsync(() -> mv);
     }
 
     @PostMapping("add")
-    public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
+    public CompletableFuture<ModelAndView> addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
         var items = cartItemService.getCardItemsByProduct(cartItem.getProduct());
 
@@ -57,7 +59,7 @@ public class CartController {
 
             cartItemService.addCartItem(previousItem);
         }
-        return mv;
+        return CompletableFuture.supplyAsync(() -> mv);
     }
 
     @PostMapping("checkout")
