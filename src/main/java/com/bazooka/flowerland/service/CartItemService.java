@@ -17,10 +17,9 @@ public class CartItemService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> retrieveItemsFromCart() {
-        List<CartItem> cartItems = new ArrayList<>();
+    public List<Product> retrieveProductsFromCart() {
+        List<CartItem> cartItems  =cartItemRepository.findAll();
         List<Product> productsInCart = new ArrayList<>();
-        cartItemRepository.findAll().forEach(c -> cartItems.add(c));
 
         for (CartItem item : cartItems) {
             productsInCart.add(item.getProduct());
@@ -29,8 +28,12 @@ public class CartItemService {
         return productsInCart;
     }
 
+    public List<CartItem> getCartItems() {
+        return cartItemRepository.findAll();
+    }
+
     public Integer getTotalCartCost() {
-        return retrieveItemsFromCart().stream().mapToInt(Product::getPrice).sum();
+        return retrieveProductsFromCart().stream().mapToInt(Product::getPrice).sum();
     }
 
     public void deleteItemFromCart(CartItem item) {

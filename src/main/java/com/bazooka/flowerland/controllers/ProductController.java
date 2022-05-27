@@ -2,6 +2,7 @@ package com.bazooka.flowerland.controllers;
 
 import com.bazooka.flowerland.entities.CartItem;
 import com.bazooka.flowerland.entities.Product;
+import com.bazooka.flowerland.model.Cart;
 import com.bazooka.flowerland.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

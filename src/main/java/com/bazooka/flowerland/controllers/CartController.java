@@ -2,14 +2,17 @@ package com.bazooka.flowerland.controllers;
 
 import com.bazooka.flowerland.entities.CartItem;
 import com.bazooka.flowerland.entities.Product;
+import com.bazooka.flowerland.model.Cart;
 import com.bazooka.flowerland.requests.DeleteItemRequest;
 import com.bazooka.flowerland.service.CartItemService;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -18,7 +21,11 @@ public class CartController {
     CartItemService cartItemService;
     @GetMapping("/items")
     public String items(Model model) {
-        model.addAttribute("cartItems", cartItemService.retrieveItemsFromCart());
+        List<Product> productsInCart = cartItemService.retrieveProductsFromCart();
+        List<CartItem> cartItems = cartItemService.getCartItems();
+        Cart cart = new Cart(cartItems);
+        model.addAttribute("cart", cart);
+        model.addAttribute("productsInCart", productsInCart);
         Integer totalCost = cartItemService.getTotalCartCost();
         model.addAttribute("totalCost", totalCost);
         model.addAttribute("deleteItemRequest", new DeleteItemRequest());
@@ -36,6 +43,13 @@ public class CartController {
     public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
         cartItemService.addCartItem(cartItem);
+        return mv;
+    }
+
+    @PostMapping("checkout")
+    public ModelAndView checkout(@ModelAttribute("cart") Cart cart) {
+        ModelAndView mv = new ModelAndView("checkout");
+        mv.addObject("cart", cart);
         return mv;
     }
 }
