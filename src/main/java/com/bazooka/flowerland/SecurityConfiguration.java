@@ -12,7 +12,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        .antMatchers("/", "/index**", "login**\"").permitAll() // prideti URL'us kuriuos gali matyt visi
+        .antMatchers("/", "/index**", "/login**", "/h2-console/**").permitAll()
+                // prideti URL'us kuriuos gali matyt visi
         .and()
         .authorizeRequests()
         .antMatchers("/test**").hasRole("ADMIN") // URL, kuriuos mato tik admin
@@ -21,6 +22,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .formLogin()
         .and()
         .httpBasic();
+
+        http.csrf().ignoringAntMatchers("/h2-console/**");
     }
 
     @Override
