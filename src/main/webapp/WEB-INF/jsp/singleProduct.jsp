@@ -23,11 +23,6 @@
             <div class="small-container single-page">
                 <table>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                    </tr>
-                    <tr>
                         <td>
                             <div class="single-info">
                                 <img class="card-img-top" src="<c:url value="/images/${product.imageUrl}"/>" alt="Card image cap" style='height: 100%; width: 100%; object-fit: contain'/>
