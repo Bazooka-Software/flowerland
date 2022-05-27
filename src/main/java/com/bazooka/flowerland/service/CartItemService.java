@@ -17,6 +17,8 @@ public class CartItemService {
     @Autowired
     private ProductRepository productRepository;
 
+
+
     public List<Product> retrieveProductsFromCart() {
         List<CartItem> cartItems  =cartItemRepository.findAll();
         List<Product> productsInCart = new ArrayList<>();
@@ -44,7 +46,7 @@ public class CartItemService {
         cartItemRepository.save(new CartItem(product, 1));
     }
 
-    public void addCartItem(CartItem cartItem) {
-        cartItemRepository.save(cartItem);
-    }
+    public List<CartItem> getCardItemsByProduct(Product product) { return cartItemRepository.findAllByProduct(product); }
+
+    public void addCartItem(CartItem cartItem) { cartItemRepository.save(cartItem);}
 }

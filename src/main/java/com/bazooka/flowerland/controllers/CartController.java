@@ -46,7 +46,14 @@ public class CartController {
     @PostMapping("add")
     public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
-        cartItemService.addCartItem(cartItem);
+        var items = cartItemService.getCardItemsByProduct(cartItem.getProduct());
+
+        if (items.isEmpty()) {
+            cartItemService.addCartItem(cartItem);
+        } else {
+            var currentQuantity = items.get(0).getQuantity();
+            items.get(0).setQuantity(currentQuantity + cartItem.getQuantity());
+        }
         return mv;
     }
 
