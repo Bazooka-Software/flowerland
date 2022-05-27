@@ -5,6 +5,5 @@ CREATE TABLE PRODUCT (
                          name VARCHAR(250) NOT NULL,
                          price INT NOT NULL,
                          quantity INT NOT NULL,
-                         imageUrl VARCHAR(250) NOT NULL
-
+                         image_url VARCHAR(250) NOT NULL
 );

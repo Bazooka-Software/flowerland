@@ -1,7 +1,7 @@
-package com.bazooka.flowerland.services;
+package com.bazooka.flowerland.service;
 
 import com.bazooka.flowerland.entities.Product;
-import com.bazooka.flowerland.repositories.ProductRepository;
+import com.bazooka.flowerland.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class ProductService {
 
     public List<Product> retrieveProducts() {
         List<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(resident -> products.add(resident));
+        productRepository.findAll().forEach(p -> products.add(p));
         return products;
     }
 
