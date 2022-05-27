@@ -4,6 +4,7 @@ import com.bazooka.flowerland.entities.CartItem;
 import com.bazooka.flowerland.entities.Product;
 import com.bazooka.flowerland.model.Cart;
 import com.bazooka.flowerland.service.ProductService;
+import org.hibernate.type.CharacterArrayType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,7 @@ public class ProductController {
       System.out.println(id);
       Product product = productService.findById(id);
       model.addAttribute("product", product);
+      model.addAttribute("cartItem", new CartItem());
       return "singleProduct";
   }
 }

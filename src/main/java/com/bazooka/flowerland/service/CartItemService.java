@@ -45,8 +45,9 @@ public class CartItemService {
         cartItemRepository.deleteById(item.getId());
     }
 
+
     public void addItemToCart(Product product, String sessionId) {
-        cartItemRepository.save(new CartItem(product, sessionId));
+        cartItemRepository.save(new CartItem(product, sessionId,1));
     }
 
     public void addCartItem(CartItem cartItem) {

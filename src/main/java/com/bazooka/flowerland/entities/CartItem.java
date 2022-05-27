@@ -1,7 +1,9 @@
 package com.bazooka.flowerland.entities;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -24,4 +26,14 @@ public class CartItem {
         this.product = product;
         this.sessionId = sessionId;
     }
+    public CartItem(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+    public CartItem(Product product, String sessionId, int quantity) {
+        this.product = product;
+        this.sessionId = sessionId;
+        this.quantity = quantity
+    }
 }
+

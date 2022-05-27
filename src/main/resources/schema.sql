@@ -13,3 +13,4 @@ CREATE TABLE PRODUCT (
   --  id INT AUTO_INCREMENT PRIMARY KEY,
    -- product_id INT references product(id)
 --);
+--);
