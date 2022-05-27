@@ -30,11 +30,11 @@
                     <tr>
                         <td>
                             <div class="single-info">
-                                <img src="/images/img.png" width="200"
-                                     height="200"/>
+                                <img class="card-img-top" src="<c:url value="/images/${product.imageUrl}"/>" alt="Card image cap" style='height: 100%; width: 100%; object-fit: contain'/>
+
                                 <div>
-                                    <p>Gele Name</p>
-                                    <small>Price: $50.00</small>
+                                    <p class="card-title">${product.name}</p>
+                                    <small class="card-text">Price: ${product.price}€</small>
                                 </div>
                             </div>
                         </td>
