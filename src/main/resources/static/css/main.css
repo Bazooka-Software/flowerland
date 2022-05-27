@@ -5,6 +5,8 @@
 .cart-item {
     width: 200px;
     height: auto;
+}
+
 .btn-primary {
     background-color: bisque;
     border-color: darkgreen;
@@ -13,6 +15,7 @@
 
 .btn-primary:hover {
     background-color: darkgreen;
+    border-color: darkgreen;
     transition: 0.7s;
 }
 
