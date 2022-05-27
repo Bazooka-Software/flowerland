@@ -16,23 +16,13 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
-    @Autowired
-    ProductService productService;
-
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
-
     @GetMapping({
             "/",
             "/index"
     })
-    public String hello(@RequestParam(value = "name", defaultValue = "World",
+    public String hello(@RequestParam(value = "name", defaultValue = "Customer",
             required = true) String name, Model model) {
-        List<Product> flowers = productService.retrieveProducts();
-
-        model.addAttribute("flowers", flowers);
+        model.addAttribute("name", name);
         return "index";
     }
 }
