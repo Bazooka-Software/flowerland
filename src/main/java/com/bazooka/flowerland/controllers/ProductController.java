@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.List;
 
@@ -41,8 +42,10 @@ public class ProductController {
 
       System.out.println(id);
       Product product = productService.findById(id);
+      String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
       model.addAttribute("product", product);
-      model.addAttribute("cartItem", new CartItem());
+      model.addAttribute("sessionId", sessionId);
+      model.addAttribute("cartItem", new CartItem(sessionId));
       return "singleProduct";
   }
 }

@@ -26,14 +26,13 @@ public class CartItem {
         this.product = product;
         this.sessionId = sessionId;
     }
-    public CartItem(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
     public CartItem(Product product, String sessionId, int quantity) {
         this.product = product;
         this.sessionId = sessionId;
-        this.quantity = quantity
+        this.quantity = quantity;
+    }
+    public CartItem(String sessionId) {
+        this.sessionId = sessionId;
     }
 }
 

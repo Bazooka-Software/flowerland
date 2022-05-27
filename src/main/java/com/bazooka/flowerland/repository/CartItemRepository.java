@@ -11,4 +11,6 @@ import java.util.List;
 public interface CartItemRepository extends CrudRepository<CartItem, Integer> {
     List<CartItem> findAll();
     List<CartItem> findAllBySessionId(String sessionId);
+    List<CartItem> findAllByProduct(Product product);
+    List<CartItem> findAllByProductAndSessionId(Product product, String sessionId);
 }

@@ -30,7 +30,7 @@ public class CartController {
         List<CartItem> cartItems = cartItemService.getCartItems();
         Cart cart = new Cart(cartItems);
         model.addAttribute("cart", cart);
-        model.addAttribute("productsInCart", productsInCart);
+        model.addAttribute("cartItemsInCart", cartItems);
         Integer totalCost = cartItemService.getTotalCartCost();
         model.addAttribute("totalCost", totalCost);
         model.addAttribute("deleteItemRequest", new DeleteItemRequest());
@@ -45,10 +45,19 @@ public class CartController {
     }
 
     @PostMapping("add")
-    public ModelAndView addItem(@ModelAttribute("product") Product product) {
+    public ModelAndView addItem(@ModelAttribute("cartItem") CartItem cartItem) {
         ModelAndView mv = new ModelAndView("redirect:items");
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        cartItemService.addItemToCart(product, sessionId);
+        var items = cartItemService.getCardItemsByProductAndSessionId(cartItem.getProduct(),sessionId);
+
+        if (items.isEmpty()) {
+            cartItemService.addCartItem(cartItem);
+        } else {
+            var previousItem = items.get(0);
+            var currentQuantity = previousItem.getQuantity();
+            previousItem.setQuantity(currentQuantity + cartItem.getQuantity());
+            cartItemService.addCartItem(previousItem);
+        }
         return mv;
     }
 

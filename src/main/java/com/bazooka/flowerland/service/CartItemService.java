@@ -20,10 +20,12 @@ public class CartItemService {
     @Autowired
     private ProductRepository productRepository;
 
+
+
     public List<Product> retrieveProductsFromCart() {
         List<Product> productsInCart = new ArrayList<>();
         String sesId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        List<CartItem> cartItems  =cartItemRepository.findAllBySessionId(sesId);
+        List<CartItem> cartItems  = cartItemRepository.findAllBySessionId(sesId);
 
         for (CartItem item : cartItems) {
             productsInCart.add(item.getProduct());
@@ -38,7 +40,16 @@ public class CartItemService {
     }
 
     public Integer getTotalCartCost() {
-        return retrieveProductsFromCart().stream().mapToInt(Product::getPrice).sum();
+        int total = 0;
+        int n = getCartItems().size();
+        List<Integer> prices = getCartItems().stream().map(c -> c.getProduct().getPrice()).toList();
+        List<Integer> quantities = getCartItems().stream().map(CartItem::getQuantity).toList();
+
+        for (int i = 0; i < n; i++) {
+            total += prices.get(i) * quantities.get(i);
+        }
+
+        return total;
     }
 
     public void deleteItemFromCart(CartItem item) {
@@ -50,7 +61,7 @@ public class CartItemService {
         cartItemRepository.save(new CartItem(product, sessionId,1));
     }
 
-    public void addCartItem(CartItem cartItem) {
-        cartItemRepository.save(cartItem);
-    }
+    public List<CartItem> getCardItemsByProductAndSessionId(Product product, String sessionId) { return cartItemRepository.findAllByProductAndSessionId(product, sessionId); }
+
+    public void addCartItem(CartItem cartItem) { cartItemRepository.save(cartItem);}
 }

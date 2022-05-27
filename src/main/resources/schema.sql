@@ -10,7 +10,8 @@ CREATE TABLE PRODUCT (
 );
 
 --CREATE TABLE CART_ITEM (
-  --  id INT AUTO_INCREMENT PRIMARY KEY,
-   -- product_id INT references product(id)
---);
+ --   id INT AUTO_INCREMENT PRIMARY KEY,
+ --   session_id VARCHAR(250) NOT NULL,
+ --   quantity INT NOT NULL,
+ --   product_id INT references product(id)
 --);
