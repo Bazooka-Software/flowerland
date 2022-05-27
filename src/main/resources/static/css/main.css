@@ -14,12 +14,10 @@
 }
 
 .card:hover {
-    background-color: #F3F3F3;
+    background-color: #e8e8e8;
     transition: 0.5s;
 }
 
-.container {
-    align-content: center;
 .hero-bg {
     background-image: url(../images/home_img1.jpg);
     background-size: cover;
