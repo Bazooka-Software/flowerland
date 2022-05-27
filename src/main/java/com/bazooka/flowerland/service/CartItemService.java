@@ -41,7 +41,7 @@ public class CartItemService {
     }
 
     public void addItemToCart(Product product) {
-        cartItemRepository.save(new CartItem(product));
+        cartItemRepository.save(new CartItem(product, 1));
     }
 
     public void addCartItem(CartItem cartItem) {

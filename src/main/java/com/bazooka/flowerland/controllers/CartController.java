@@ -6,9 +6,12 @@ import com.bazooka.flowerland.model.Cart;
 import com.bazooka.flowerland.requests.DeleteItemRequest;
 import com.bazooka.flowerland.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.CustomEditorConfigurer;
+import org.springframework.beans.propertyeditors.ClassEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
+
     @Autowired
     CartItemService cartItemService;
     @GetMapping("/items")

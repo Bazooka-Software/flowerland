@@ -11,5 +11,6 @@ CREATE TABLE PRODUCT (
 
 CREATE TABLE CART_ITEM (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT references product(id)
+    product_id INT references product(id),
+    quantity INT NOT NULL
 );
