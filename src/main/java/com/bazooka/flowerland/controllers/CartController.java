@@ -29,7 +29,7 @@ public class CartController {
         List<CartItem> cartItems = cartItemService.getCartItems();
         Cart cart = new Cart(cartItems);
         model.addAttribute("cart", cart);
-        model.addAttribute("productsInCart", productsInCart);
+        model.addAttribute("cartItemsInCart", cartItems);
         Integer totalCost = cartItemService.getTotalCartCost();
         model.addAttribute("totalCost", totalCost);
         model.addAttribute("deleteItemRequest", new DeleteItemRequest());
