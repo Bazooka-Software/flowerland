@@ -2,6 +2,8 @@ package com.bazooka.flowerland.controllers;
 
 import com.bazooka.flowerland.entities.CartItem;
 import com.bazooka.flowerland.entities.Product;
+import com.bazooka.flowerland.entities.ShippingAddress;
+import com.bazooka.flowerland.entities.UserOrder;
 import com.bazooka.flowerland.model.Cart;
 import com.bazooka.flowerland.requests.DeleteItemRequest;
 import com.bazooka.flowerland.service.CartItemService;
@@ -67,6 +69,7 @@ public class CartController {
     public ModelAndView checkout(@ModelAttribute("cart") Cart cart) {
         ModelAndView mv = new ModelAndView("checkout");
         mv.addObject("cart", cart);
+        mv.addObject("userOrder", new UserOrder());
         return mv;
     }
 }
